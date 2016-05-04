@@ -69,7 +69,6 @@ public abstract class Piece {
             this.x = x;
             this.y = y;
             this.square = this.board.getSquare(this.x, this.y);
-            System.out.print("Yes");
         }
     }
 

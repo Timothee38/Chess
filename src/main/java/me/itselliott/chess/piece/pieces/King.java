@@ -8,7 +8,7 @@ import me.itselliott.chess.piece.PieceState;
 /**
  * Created by Elliott2 on 15-Apr-16.
  */
-public class King extends Piece{
+public class King extends Piece {
 
     public King(Colour owner, PieceState state, int x, int y, String iconPath) {
         super(owner, state, x, y, iconPath);

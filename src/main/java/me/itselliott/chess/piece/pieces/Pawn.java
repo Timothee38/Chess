@@ -23,10 +23,8 @@ public class Pawn extends Piece implements Promotable {
 
     @Override
     public void move(int x, int y) {
-        if (this.canMove(x, y)) {
-            this.board.setSquare(this, x, y);
-            this.moves++;
-        }
+        super.move(x,y);
+        this.moves++;
     }
 
     @Override

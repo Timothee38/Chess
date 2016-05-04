@@ -28,6 +28,9 @@ public class GameHandler {
         this.stopWatch.start();
         this.playing = true;
         this.gameState = GameState.PLAYING;
+        this.turn = Colour.WHITE;
+        System.out.println("Starting Game!");
+        System.out.println("Starting Side is: " + this.turn.name());
         Chess.getInstance().getWindow().open();
     }
 

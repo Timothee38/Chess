@@ -33,7 +33,7 @@ public class Window extends Application {
             if (square.getColour().equals(Colour.BLACK)) square.getRectangle().setFill(Color.DARKGRAY);
             else if (square.getColour().equals(Colour.WHITE)) square.getRectangle().setFill(Color.GRAY);
             if (square.isOccupied()) square.getRectangle().setFill(new ImagePattern(new Image(square.getPiece().getIconLocation())));
-            square.getRectangle().setOnMouseClicked(new ClickEvent(square.getRectangle(), square));
+            square.getRectangle().setOnMouseClicked(new MoveHandler(square.getRectangle(), square));
             group.getChildren().add(square.getRectangle());
         }
         return group;

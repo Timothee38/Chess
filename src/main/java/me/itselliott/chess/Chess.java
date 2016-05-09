@@ -16,6 +16,12 @@ import java.util.List;
 
 /**
  * Created by Elliott2 on 15-Apr-16.
+ *
+ * TODO: Implement all pieces
+ * TODO: Add piece collision to prevent same colour jumping
+ * TODO: Work in win conditions
+ * TODO: Improve GUI
+ *
  */
 public class Chess {
 

@@ -22,7 +22,6 @@ public class Square {
         this.occupied = occupied;
         this.piece = piece;
         this.rectangle = new Rectangle(45, 45);
-        this.colour = colour;
         this.rectangle.setX(this.x * 45);
         this.rectangle.setY(this.y * 45);
     }

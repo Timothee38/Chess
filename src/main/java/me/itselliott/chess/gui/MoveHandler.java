@@ -1,6 +1,7 @@
 package me.itselliott.chess.gui;
 
 import javafx.event.EventHandler;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -36,22 +37,18 @@ public class MoveHandler implements EventHandler<MouseEvent> {
                 if (this.square.isOccupied()) {
                     this.gameHandler.setActiveSquare(this.square);
                     if (this.gameHandler.getActiveSquare().getPiece().getPlayer() == this.gameHandler.getCurrentTurn()) {
-                        this.square.getPiece().getMoves().forEach(move -> move.getRectangle().setFill(Color.AQUA));
+                        this.square.getPiece().getMoves().forEach(move ->  move.getRectangle().setFill(Color.rgb(75, 230, 255, 0.5)));
                         this.gameHandler.setGameState(GameState.WAITING);
                     }
                 }
             } else if (this.gameHandler.getGameState().equals(GameState.WAITING)) {
                 if (this.gameHandler.getActiveSquare().getPiece().getX() == this.square.getX() && this.gameHandler.getActiveSquare().getPiece().getY() == this.square.getY()) {
                     this.removeHighlightedSquares();
-                    this.gameHandler.setActiveSquare(null);
-                    this.gameHandler.setGameState(GameState.PLAYING);
                 } else if (this.gameHandler.getActiveSquare().getPiece().canMove(this.square.getX(), this.square.getY())) {
-                    this.removeHighlightedSquares();
                     this.gameHandler.getActiveSquare().getPiece().getMoves().stream().filter(move -> !move.isOccupied()).forEach(move -> move.getRectangle().setFill(move.getColour() == Colour.WHITE ? Color.GRAY : Color.DARKGRAY));
                     this.gameHandler.getActiveSquare().getPiece().move(this.square.getX(), this.square.getY());
-                    this.gameHandler.setGameState(GameState.PLAYING);
                     this.gameHandler.setTurn(ColourUtil.inverseCurrent());
-                    this.gameHandler.setActiveSquare(null);
+                    this.removeHighlightedSquares();
                     System.out.println("Current Turn is now: " + this.gameHandler.getCurrentTurn().name());
                 }
             }
@@ -66,7 +63,8 @@ public class MoveHandler implements EventHandler<MouseEvent> {
                 square.getRectangle().setFill(new ImagePattern(new Image(square.getPiece().getIconLocation())));
             }
         }
-
+        this.gameHandler.setActiveSquare(null);
+        this.gameHandler.setGameState(GameState.PLAYING);
     }
 }
 
